@@ -11,12 +11,8 @@ import pinecone
 from langchain.chains.question_answering import load_qa_chain
 
 def get_text():
-    input_text = st.text_input("Enter Question: ", key = "input", on_change = submit)
+    input_text = st.text_input("Enter Question: ", key = "input")
     return input_text
-
-def submit():
-    st.session_state.something = st.session_state.input
-    st.session_state.input = ''
   
 pinecone.init(
 api_key = environ['PINECONE_API_KEY'],  # find at app.pinecone.io
@@ -35,9 +31,6 @@ st.header(title)
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
-    
-if 'something' not in st.session_state:
-    st.session_state.something = ''
 
 if "past" not in st.session_state:
     st.session_state["past"] = []
