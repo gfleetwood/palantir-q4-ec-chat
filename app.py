@@ -15,7 +15,7 @@ def get_text():
     return input_text
 
 def submit():
-    st.session_state.something = st.session_state.widget
+    st.session_state.something = st.session_state.input
     st.session_state.input = ''
   
 pinecone.init(
