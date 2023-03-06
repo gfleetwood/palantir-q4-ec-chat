@@ -1,1 +1,1 @@
-Template for fine tuning LLMs.
+Chat GPT fine tuned on Palantir's 2022 Q4 earnings call transcript.
