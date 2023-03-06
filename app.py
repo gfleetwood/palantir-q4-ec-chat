@@ -31,7 +31,7 @@ if "generated" not in st.session_state:
 if "past" not in st.session_state:
     st.session_state["past"] = []
 
-st.markdown("[Earnings Call](%s)".format("https://www.fool.com/earnings/call-transcripts/2023/02/14/palantir-technologies-pltr-q4-2022-earnings-call-t/"))
+st.markdown("[Earnings Call]({})".format("https://www.fool.com/earnings/call-transcripts/2023/02/14/palantir-technologies-pltr-q4-2022-earnings-call-t/"))
 user_input = st.text_input("Enter Question: ", key = "input")
 
 if user_input:
