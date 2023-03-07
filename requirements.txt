@@ -2,3 +2,4 @@ streamlit-chat
 pinecone-client
 openai
 langchain
+chromadb

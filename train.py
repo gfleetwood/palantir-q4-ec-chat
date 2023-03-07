@@ -22,7 +22,7 @@ environment = environ['PINECONE_API_ENV']   # next to api key in console
 
 llm = OpenAI(temperature = 0.0)
 
-loader = UnstructuredHTMLLoader("source/Palantir Technologies (PLTR) Q4 2022 Earnings Call Transcript _ The Motley Fool.html")
+loader = UnstructuredHTMLLoader("data/Palantir Technologies (PLTR) Q4 2022 Earnings Call Transcript _ The Motley Fool.html")
 data = loader.load()
 text_splitter = CharacterTextSplitter(chunk_size = 1000, chunk_overlap = 0)
 texts = text_splitter.split_documents(data)

@@ -1,0 +1,35 @@
+FROM python:3.8-slim-buster
+
+RUN apt-get update && apt-get install -y \
+    libcurl4-gnutls-dev \
+    libssl-dev \
+    libxml2-dev \
+    unixodbc-dev \
+    odbc-postgresql
+    
+RUN apt-get update && apt-get install -y apt-transport-https ca-certificates curl gnupg && \
+    curl -sLf --retry 3 --tlsv1.2 --proto "=https" 'https://packages.doppler.com/public/cli/gpg.DE2A7741A397C129.key' | apt-key add - && \
+    echo "deb https://packages.doppler.com/public/cli/deb/debian any-version main" | tee /etc/apt/sources.list.d/doppler-cli.list && \
+    apt-get update && \
+    apt-get -y install doppler
+
+WORKDIR /home/app
+COPY . .
+
+RUN /usr/local/bin/python -m pip3 install --upgrade pip3
+RUN pip3 install --trusted-host pypi.python.org -r requirements.txt         
+
+#CMD ["python", "app.py"]
+
+#docker pull IMG
+#docker build -t IMG_NAME:TAG . [--no-cache]
+#docker run [--rm] -e DOPPLER_TOKEN='$DOPPLER_TOKEN' -p 3838:3838 -it IMG_NAME -v `pwd`:/data /bin/bash
+#docker ps
+#docker rmi IMG_ID
+#docker logs CONTAINER_ID
+#docker inspect IMG_ID
+#docker system prune
+#docker cp <containerId>:/file/path/within/container /host/path/target
+
+# start a bash shell in an already running container
+#docker exec -it CONTAINER /bin/bash
